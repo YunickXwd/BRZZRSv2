@@ -1,5 +1,5 @@
 # BRZZRSv2
-->Simple Fb Bruteforce💗
+->Simple Fb + Insta Bruteforce💗
 -
 rm -rf BRZZRSv2
 -
