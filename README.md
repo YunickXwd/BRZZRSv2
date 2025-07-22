@@ -20,7 +20,12 @@ cd BRZZRSv2
 
 python insta.py
 
+FACEBOOK 
+-
+
 ![Banner](https://raw.githubusercontent.com/YunickXwd/BRZZRSv2/main/IMG_20250722_185612.jpg)
 
+INSTAGRAM
+-
 
 ![BRZZRSv2 Tool Image](https://raw.githubusercontent.com/YunickXwd/BRZZRSv2/refs/heads/main/IMG_20250722_222506.jpg)
