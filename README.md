@@ -10,7 +10,7 @@ cd BRZZRSv2
 python run.py
 
 
-#FORINSTA
+#FORINSTA 
 -
 rm -rf BRZZRSv2
 
@@ -20,12 +20,12 @@ cd BRZZRSv2
 
 python insta.py
 
-FACEBOOK 
+FACEBOOK TOOL KIT SS:
 -
 
 ![Banner](https://raw.githubusercontent.com/YunickXwd/BRZZRSv2/main/IMG_20250722_185612.jpg)
 
-INSTAGRAM
+INSTAGRAM TOOL KIT SS:
 -
 
 ![BRZZRSv2 Tool Image](https://raw.githubusercontent.com/YunickXwd/BRZZRSv2/refs/heads/main/IMG_20250722_222506.jpg)
