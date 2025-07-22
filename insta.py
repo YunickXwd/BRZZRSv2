@@ -17,27 +17,31 @@ def git_pull():
     try:
         typewriter("🔁 Checking for updates via GitHub...", 0.02)
         subprocess.run(["git", "pull"], check=True)
-        typewriter("✅ Updated successfully!\n", 0.02)
+        typewriter("✅ Git updated successfully!\n", 0.02)
     except Exception as e:
         print("⚠️ Git pull failed:", e)
 
 def run_main():
     try:
-        import YunickInstaMain  # This loads the .so compiled module
+        import YunickInstaMain
+        YunickInstaMain.main()  # 🔥 Call your main() function here
     except ImportError as e:
-        typewriter("❌ Failed to load tool: " + str(e))
+        typewriter("❌ Import Error: " + str(e))
+        sys.exit(1)
+    except AttributeError:
+        typewriter("❌ Error: main() function not found in compiled module.")
         sys.exit(1)
 
 def welcome_animation():
     banner = """
-╔════════════════════════════════╗
-║   🚀 Welcome to YunickXwd Tool 🚀   ║
-╚════════════════════════════════╝
+╔══════════════════════════════════════════╗
+║    🚀 Welcome to YunickXwd Insta Tool 🚀    ║
+╚══════════════════════════════════════════╝
 """
     print(banner)
-    typewriter("⚡ Tool created by: YunickXwd", 0.03)
-    typewriter("📂 Running optimized Cython tool...", 0.03)
-    typewriter("📱 Checking device architecture...", 0.03)
+    typewriter("🔒 Instagram Cracking Tool | By YunickXwd", 0.03)
+    typewriter("💻 Compiled & Optimized with Cython", 0.03)
+    typewriter("📲 Starting environment checks...\n", 0.03)
 
 def main():
     os.system("clear" if os.name == "posix" else "cls")
@@ -45,11 +49,11 @@ def main():
     arch = check_architecture()
 
     if '64' in arch:
-        typewriter("✅ 64-bit device detected. Starting engine...\n", 0.03)
+        typewriter("✅ 64-bit device detected. Launching tool...\n", 0.03)
         git_pull()
         run_main()
     else:
-        typewriter("❌ Sorry, your device is 32-bit. This tool supports only 64-bit devices.\n", 0.04)
+        typewriter("❌ Sorry, your device is 32-bit. This tool only runs on 64-bit systems.\n", 0.04)
 
 if __name__ == "__main__":
     main()
