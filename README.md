@@ -15,7 +15,7 @@ python run.py
 -
 rm -rf BRZZRSv2
 
-gitclone https://github.com/YunickXwd/BRZZRSv2
+git clone https://github.com/YunickXwd/BRZZRSv2
 
 cd BRZZRSv2
 
@@ -25,7 +25,7 @@ python insta.py
 -
 rm -rf BRZZRSv2
 
-gitclone https://github.com/YunickXwd/BRZZRSv2
+git clone https://github.com/YunickXwd/BRZZRSv2
 
 cd BRZZRSv2
 
