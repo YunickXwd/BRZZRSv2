@@ -1,80 +1,33 @@
-import os
-import sys
-import time
-import requests
 import platform
 import subprocess
-from itertools import cycle
-from threading import Thread
+import sys
 
-def animate():
-    for c in cycle(['|', '/', '-', '\\']):
-        if done:
-            break
-        sys.stdout.write(f'\rChecking environment {c}')
-        sys.stdout.flush()
-        time.sleep(0.1)
+def is_64bit():
+    return platform.machine().endswith('64')
 
-
-def check_device():
-    global done
-    print("\n" + "="*50)
-    print("Checking Device Compatibility...")
-    
-    if platform.system() != "Linux":
-        print("\n[!] This tool only works on Android/Linux devices")
-        return False
-        
-    machine = platform.machine()
-    if "aarch64" in machine or "arm64" in machine:
-        print("\n[✓] 64-bit Android Device Detected")
-        return True
-    else:
-        print("\n[!] Sorry, 32-bit devices are not supported")
-        return False
-
-def update_tool():
-    print("\n" + "="*50)
-    print("Checking for updates...")
+def git_pull():
     try:
-        output = subprocess.check_output(["git", "pull"]).decode()
-        if "Already up to date" in output:
-            print("[✓] Tool is already up-to-date")
-        else:
-            print("[✓] Tool updated successfully")
-            print(output)
-    except Exception as e:
-        print(f"[!] Update failed: {str(e)}")
+        print("🔄 Pulling latest updates from Git...")
+        subprocess.run(['git', 'pull'], check=True)
+    except subprocess.CalledProcessError:
+        print("❌ Git pull failed.")
+        sys.exit(1)
 
 def main():
-    os.system('clear' if os.name == 'posix' else 'cls')
-    
-    global done
-    done = False
-    t = Thread(target=animate)
-    t.start()
-    
-    time.sleep(2) 
-    done = True
-    
-    if not check_device():
+    if not is_64bit():
+        print("❌ Your device is not 64-bit. This tool only supports 64-bit systems.")
         sys.exit(1)
-        
-    update_tool()
-    
-    print("\n" + "="*50)
-    print("Starting Facebook UID Dumper...\n")
-    
+
+    git_pull()
+
+    print("🚀 Starting YunickFileDump Tool...")
     try:
-        from YunickDump import FacebookUIDDumper
-        dumper = FacebookUIDDumper()
-        dumper.run()
-    except ImportError:
-        print("[!] Error: Could not load compiled module")
-        print("[!] Make sure YunickDump.cpython-312.so is in the same directory")
-        sys.exit(1)
-    except Exception as e:
-        print(f"[!] Error: {str(e)}")
+        import YunickDump
+        YunickDump.main() 
+    except AttributeError:
+        print("✅ Module imported, but no main() function found. If your code runs on import, you're good.")
+    except ImportError as e:
+        print(f"❌ Failed to import YunickDump: {e}")
         sys.exit(1)
 
 if __name__ == "__main__":
